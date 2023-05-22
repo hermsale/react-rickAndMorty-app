@@ -1,0 +1,50 @@
+.div__characterDetail{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    padding: 20px;
+    background-color: #7cacf4f6;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+    transition: transform 1.3s ease-in-out;
+    transform: translateX(0%);
+    z-index: 9999;
+
+    max-height: 100vh; /* Establece el alto máximo como el alto de la ventana */
+    overflow-y: auto; /* Añade una barra de desplazamiento vertical si el contenido excede el alto máximo */
+  }
+
+  h1{
+    text-align: center;
+  }
+
+  /* Estilos para el botón "cancel" */
+.btn-cancel{
+    /* Cambia los valores según tus preferencias */
+    background-color: #ccc;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  /* Estilos al pasar el mouse por encima del botón */
+  .btn-cancel:hover {
+    background-color: #aaa;
+  }
+  
+  /* Estilos cuando se presiona el botón */
+  .btn-cancel:active {
+    background-color: #888;
+  }
+
+  img{
+    width: 362px;
+    height: 362px;
+  }

@@ -1,22 +1,40 @@
 import React from "react";
 import "./Personaje.css"
+import { CharacterDetail } from "../CharacterDetail";
 
 function Personaje (props){
 
+    const [openCharacterDetail, setOpenCharacterDetail] = React.useState('')
+
+    const onOpenCharacter = () => {
+        setOpenCharacterDetail(prevState => !prevState)
+        
+    }
+
     return (
         
-            <li className="li__container">
+        <React.Fragment>
+            <li className="li__container"
+                onClick={() => onOpenCharacter()}
+            >
                 <img src={props.img} alt={props.name} />
                 <span>{props.name}</span>
-                {/* <span>{props.species}</span>
-                <span>{props.status} </span>
-                <span>{props.location}</span> */}
             </li>
-    
+            
+            {!!openCharacterDetail && (
+                <CharacterDetail
+                    name={props.name}
+                    img={props.img}
+                    species={props.species}
+                    status={props.status}
+                    location={props.location}
+                    setOpenCharacterDetail={setOpenCharacterDetail}
+                />
+            )}
+        </React.Fragment>
+
+
     )
 }
 
 export {Personaje}
-
-// key={index}> {todo.name} {todo.status==='Alive'  ? '✅' : '❌'}
-// <img src={todo.image} alt={todo.name}/>
