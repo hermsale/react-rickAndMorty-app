@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import axios from "axios";
 
-import {Personaje} from "./Personaje"
+import {Personaje} from "./Character"
 import './App.css';
-import { ListaPersonajes } from './ListaPersonajes';
+import { ListaPersonajes } from './CharacterList';
 
 function App() {
 
