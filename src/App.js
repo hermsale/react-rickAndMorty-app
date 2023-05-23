@@ -4,43 +4,53 @@ import axios from "axios";
 import {Personaje} from "./Character"
 import './App.css';
 import { ListaPersonajes } from './CharacterList';
+import { SearchBar } from './SearchBar';
+import { Selector } from './Selector';
 
 function App() {
 
-  const url =  'https://rickandmortyapi.com/api/character';
-  // https://jsonplaceholder.typicode.com/posts/1
-  // https://rickandmortyapi.com/api/character
-  const [post, setPost ] = React.useState('');
+  const urlCharacter =  'https://rickandmortyapi.com/api/character';
+  const urlEpisode = 'https://rickandmortyapi.com/api/episode/49';
+ 
+  // estado para controlar la seleccion
+  const [selectedValue, setSelectedValue] = React.useState('character');
 
-  // const fetchApi = async() =>{
-  //   const response = await fetch(url);
-  //   console.log(response.status);
-  //   const responseJSON = await response.json();
-  //   setPost(responseJSON);
-  // }
 
-  // useEffect(()=>{
-  //   fetchApi();
-  // },[])
+  const [postCharacter, setPostCharacter ] = React.useState('');
+  const [postEpisode, setPostEpisode ] = React.useState('');
 
+  // character
   useEffect(() => {
-    axios.get(url).then((response) => {
-      setPost(response.data);
+    axios.get(urlCharacter).then((response) => {
+      setPostCharacter(response.data);
+    });
+  }, []);
+
+  // episode
+  useEffect(() => {
+    axios.get(urlEpisode).then((response) => {
+      setPostEpisode(response.data);
     });
   }, []);
   
-  console.log('esta es la info ',post.info);
+  console.log('esta es la info de los personajes',postCharacter.info);
 
-  console.log('esta es los results ',post.results);
-  const personajes = post.results;
+  console.log('Personajes detallado ',postCharacter.results);
+  const personajes = postCharacter.results;
+  const episode = postCharacter.results;
 
-
+  console.log('episodios ',episode)
   return (
     <React.Fragment>
-      
+      <Selector
+      selectedValue={selectedValue}
+      setSelectedValue={setSelectedValue}
+      />
+      <SearchBar/>
+
+    {selectedValue==='character' && (
       <ListaPersonajes
         personajes={personajes}
-      
       // render props
         render = {item => (
             <Personaje
@@ -52,9 +62,11 @@ function App() {
               img={item.image}
             />
          
-        )}
-       
+            )}
       />
+    )}  
+
+
      
     </React.Fragment>
   );
