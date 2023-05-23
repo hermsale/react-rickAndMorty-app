@@ -10,7 +10,7 @@ import { Selector } from './Selector';
 function App() {
 
   const urlCharacter =  'https://rickandmortyapi.com/api/character';
-  const urlEpisode = 'https://rickandmortyapi.com/api/episode/49';
+  // const urlEpisode = 'https://rickandmortyapi.com/api/episode/49';
  
   // estado para controlar la seleccion
   const [selectedValue, setSelectedValue] = React.useState('character');
