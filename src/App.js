@@ -17,7 +17,7 @@ function App() {
 
 
   const [postCharacter, setPostCharacter ] = React.useState('');
-  const [postEpisode, setPostEpisode ] = React.useState('');
+  // const [postEpisode, setPostEpisode ] = React.useState('');
 
   // character
   useEffect(() => {
@@ -27,11 +27,11 @@ function App() {
   }, []);
 
   // episode
-  useEffect(() => {
-    axios.get(urlEpisode).then((response) => {
-      setPostEpisode(response.data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   axios.get(urlEpisode).then((response) => {
+  //     setPostEpisode(response.data);
+  //   });
+  // }, []);
   
   console.log('esta es la info de los personajes',postCharacter.info);
 
