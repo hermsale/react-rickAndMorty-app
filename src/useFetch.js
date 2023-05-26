@@ -30,14 +30,19 @@ function useFetch(){
     fetchCharacters(urlCharacter)
   }, []);
 
-  // funcion para filtrar las busquedas por nombre de personaje
+  // funcion para filtrar las busquedas por nombre de personaje ///////////////////////////////////////////////////////
 
+  // creamos un array vacio, que almacenara las coincidencias
   let searchedCharacters = [];
+
+  // esta variable searchedCharacters es la que mostrará todos los personajes en pantalla 
   // si no hay nada escrito en el buscador, mostramos todos los personajes
   if(!searchValue.length>=1){
     searchedCharacters = personajes;
   }else{
+    // guardamos en searchedCharacters las coincidencias del filter 
     searchedCharacters = personajes.filter(personaje =>{
+      // los campos de busqueda como de nombres de personajes, los pasamos a minuscula, para que no haya error en la coincidencia de datos
       const nombrePersonaje = personaje.name.toLowerCase();
       const searchText = searchValue.toLowerCase();
       return nombrePersonaje.includes(searchText);
