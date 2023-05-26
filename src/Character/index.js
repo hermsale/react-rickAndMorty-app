@@ -8,7 +8,6 @@ function Personaje (props){
 
     const onOpenCharacter = () => {
         setOpenCharacterDetail(prevState => !prevState)
-        
     }
 
     return (

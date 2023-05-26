@@ -1,13 +1,16 @@
 import React from "react";
 import "./SearchBar.css"
 
-function SearchBar(){
+function SearchBar({ setSearchValue }) {
 
-    // const [searchValue, setSearchValue] = React.useState('');  
 
-    return( 
-            <input type="text" className="input__searchBar" placeholder="Buscar..."/>
+    const onSearchValue = (event) => {
+        setSearchValue(event.target.value);
+    }
+
+    return (
+        <input type="text" className="input__searchBar" placeholder="Buscar..." onChange={onSearchValue} />
     )
 }
 
-export {SearchBar} 
+export { SearchBar } 

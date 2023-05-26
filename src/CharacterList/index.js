@@ -5,7 +5,7 @@ function ListaPersonajes(props){
     return(
         <section className="section__listaPersonajes">
             <ul>
-                 {props.personajes?.map(props.render)}
+                 {props.searchedCharacters?.map(props.render)}
             </ul>
         </section>
     )
