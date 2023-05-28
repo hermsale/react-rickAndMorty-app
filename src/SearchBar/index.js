@@ -9,7 +9,7 @@ function SearchBar({ setSearchValue }) {
     }
 
     return (
-        <input type="text" className="input__searchBar" placeholder="Buscar..." onChange={onSearchValue} />
+        <input type="text" className="input__searchBar" placeholder="Buscar personaje" onChange={onSearchValue} />
     )
 }
 

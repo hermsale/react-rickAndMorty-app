@@ -8,6 +8,7 @@
     margin-bottom: 10px;
     max-width: 200px;
     margin: 5px;
+    cursor: pointer;
   }
   
   .li__container img {
@@ -20,6 +21,7 @@
   .li__container span {
     margin-right: 5px;
     text-decoration: none; 
+    font-family: cursive;
   }
   
   .li__container:hover{

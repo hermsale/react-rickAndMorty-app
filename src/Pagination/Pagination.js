@@ -1,16 +1,27 @@
 import React from 'react'
 import "./Pagination.css"
 
-function Pagination({ prevPage, nextPage, fetchCharacters }) {
+function Pagination({ prevPage, nextPage, fetchCharacters, selectedValue, fetchEpisodes  }) {
 
+    // pasamos fetchCharacters para que pueda pasar la nueva url de las paginas
     const onPrevius = () => {
         console.log('pagina previa ', prevPage);
-        fetchCharacters(prevPage);
+        if(selectedValue==='character'){
+            fetchCharacters(prevPage);
+        }else if(selectedValue==='episode'){
+            fetchEpisodes(prevPage)
+        }
+
     }
 
     const onNext = () => {
+        if(selectedValue==='character'){
         console.log('pagina siguiente ', nextPage);
         fetchCharacters(nextPage);
+        }else if(selectedValue==='episode'){
+            fetchEpisodes(nextPage);
+        }
+
     }
 
     return (

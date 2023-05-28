@@ -4,10 +4,13 @@ import axios from "axios";
 function useFetch(){
 
     const urlCharacter =  'https://rickandmortyapi.com/api/character';
- 
+    const urlEpisodes = 'https://rickandmortyapi.com/api/episode'
+
   // estado para controlar la seleccion
   const [selectedValue, setSelectedValue] = React.useState('character');
   const [personajes, setPersonajes ] = React.useState([]);
+  const [episodes, setEpisodes] = React.useState([]);
+
   // guardamos la informacion de la url page next y previous
   const [page, setPage] = React.useState({});
 
@@ -20,15 +23,30 @@ function useFetch(){
 // funcion que hace los llamados de character y paginacion
   const fetchCharacters = (url) => {
     axios.get(url).then((response) => {
-      setPersonajes(response.data.results);
-      // guardamos el objeto que tiene la pagina previa y la siguiente 
-      setPage(response.data.info);
+        setPersonajes(response.data.results);
+        // guardamos el objeto que tiene la pagina previa y la siguiente 
+        setPage(response.data.info);
     });
   }
 
+  // funcion que hace los llamados de character y paginacion
+  const fetchEpisodes = (url) => {
+    axios.get(url).then((response) => {
+        setEpisodes(response.data.results);
+        // guardamos el objeto que tiene la pagina previa y la siguiente 
+        setPage(response.data.info);
+        // console.log(response.data.results)
+    });
+  }
+
+
   useEffect(() => {
-    fetchCharacters(urlCharacter)
-  }, []);
+    if(selectedValue === 'character'){
+      fetchCharacters(urlCharacter)
+    }else if(selectedValue === 'episode'){
+      fetchEpisodes(urlEpisodes)
+    }
+  }, [selectedValue]);
 
   // funcion para filtrar las busquedas por nombre de personaje ///////////////////////////////////////////////////////
 
@@ -57,7 +75,9 @@ function useFetch(){
         nextPage,
         fetchCharacters,
         setSearchValue,
-        searchedCharacters
+        searchedCharacters,
+        episodes,
+        fetchEpisodes
     }
 }
 

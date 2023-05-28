@@ -8,6 +8,7 @@ import { Selector } from './Selector';
 import React from "react";
 import { useFetch } from "./useFetch";
 import { Pagination } from "./Pagination/Pagination";
+import { Episode } from "./Episode";
 
 
 
@@ -21,7 +22,9 @@ function App() {
     nextPage,
     fetchCharacters,
     setSearchValue,
-    searchedCharacters
+    searchedCharacters,
+    episodes,
+    fetchEpisodes
   } = useFetch();
   
   return (
@@ -33,14 +36,18 @@ function App() {
       setSelectedValue={setSelectedValue}
       />
 
+{selectedValue==='character' && (
       <SearchBar
       setSearchValue={setSearchValue}
       />
-
+)
+}
     <Pagination 
      prevPage={prevPage}
      nextPage={nextPage}
+     selectedValue={selectedValue}
      fetchCharacters={fetchCharacters}
+     fetchEpisodes={fetchEpisodes}
     />
     
     {selectedValue==='character' && (
@@ -61,11 +68,19 @@ function App() {
       />
     )}  
 
+    {selectedValue==='episode' && (
+      <Episode 
+      episodes={episodes}
+      />
+
+    )}
           
     <Pagination 
      prevPage={prevPage}
      nextPage={nextPage}
+     selectedValue={selectedValue}
      fetchCharacters={fetchCharacters}
+     fetchEpisodes={fetchEpisodes}
     />
 
      

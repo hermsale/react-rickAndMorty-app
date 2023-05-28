@@ -15,7 +15,7 @@ function Selector({setSelectedValue, selectedValue}){
     return(
         <select className="select__bar" value={selectedValue} onChange={handleSeleccionChange}>
             <option value="character">Personajes</option>
-            <option value="location">Ubicaciones</option>
+            {/* <option value="location">Ubicaciones</option> */}
             <option value="episode">Episodios</option>
         </select>
     )
