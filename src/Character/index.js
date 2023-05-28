@@ -1,6 +1,7 @@
 import React from "react";
 import "./Personaje.css"
 import { CharacterDetail } from "../CharacterDetail";
+import { BsFillCircleFill } from "react-icons/bs";
 
 function Personaje (props){
 
@@ -18,6 +19,11 @@ function Personaje (props){
             >
                 <img src={props.img} alt={props.name} />
                 <span>{props.name}</span>
+                    <BsFillCircleFill
+                    className={`status__icon && ${props.status==='unknown' && "status__icon-unknown"} || ${props.status==='Dead' && "status__icon-dead"}`}
+                    />
+                
+                
             </li>
             
             {!!openCharacterDetail && (
