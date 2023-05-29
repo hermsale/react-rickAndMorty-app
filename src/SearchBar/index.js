@@ -1,7 +1,7 @@
 import React from "react";
 import "./SearchBar.css"
 
-function SearchBar({ setSearchValue }) {
+function SearchBar({ setSearchValue, loading, error }) {
 
 
     const onSearchValue = (event) => {
@@ -9,7 +9,7 @@ function SearchBar({ setSearchValue }) {
     }
 
     return (
-        <input type="text" className="input__searchBar" placeholder="Buscar personaje" onChange={onSearchValue} />
+        <input type="text" className="input__searchBar" placeholder="Buscar personaje" onChange={onSearchValue} disabled={loading || error} />
     )
 }
 

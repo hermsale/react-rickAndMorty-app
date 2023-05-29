@@ -1,7 +1,7 @@
 import React from 'react'
 import "./Pagination.css"
 
-function Pagination({ prevPage, nextPage, fetchCharacters, selectedValue, fetchEpisodes  }) {
+function Pagination({ prevPage, nextPage, fetchCharacters, selectedValue, fetchEpisodes, error  }) {
 
     // pasamos fetchCharacters para que pueda pasar la nueva url de las paginas
     const onPrevius = () => {
@@ -27,11 +27,11 @@ function Pagination({ prevPage, nextPage, fetchCharacters, selectedValue, fetchE
     return (
         <div className="pagination">
             {
-                !!prevPage &&
+                !!prevPage && !error &&
                 <button className="previous-page" onClick={onPrevius}>Anterior</button>
             }
             {
-                !!nextPage &&
+                !!nextPage && !error &&
                 <button className="next-page" onClick={onNext}>Siguiente</button>
             }
         </div>

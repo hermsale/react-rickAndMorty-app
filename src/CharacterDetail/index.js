@@ -3,7 +3,7 @@ import "./CharacterDetail.css"
 
 function CharacterDetail(props){
 
-    React.useContext();
+    // React.useContext();
 
     const onCancel = () =>{
 

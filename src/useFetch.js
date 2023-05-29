@@ -1,19 +1,26 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 
+
 function useFetch(){
 
     const urlCharacter =  'https://rickandmortyapi.com/api/character';
-    const urlEpisodes = 'https://rickandmortyapi.com/api/episode'
+    const urlEpisodes = 'https://rickandmortyapi.com/api/episode';
+
 
   // estado para controlar la seleccion
   const [selectedValue, setSelectedValue] = React.useState('character');
   const [personajes, setPersonajes ] = React.useState([]);
   const [episodes, setEpisodes] = React.useState([]);
 
+  // estados de carga ///////////////////////////////////////////////////////////
+  const [ loading, setLoading ] = React.useState(true);
+  const [ error, setError ] = React.useState(false)
+
   // guardamos la informacion de la url page next y previous
   const [page, setPage] = React.useState({});
 
+  // barra de busqueda de personajes /////////////////////////////
   const [searchValue, setSearchValue] = React.useState('');  
 
   // guardamos la informacion de la url page next y previous
@@ -21,13 +28,25 @@ function useFetch(){
   const nextPage = page.next;
 
 // funcion que hace los llamados de character y paginacion
-  const fetchCharacters = (url) => {
-    axios.get(url).then((response) => {
-        setPersonajes(response.data.results);
-        // guardamos el objeto que tiene la pagina previa y la siguiente 
-        setPage(response.data.info);
-    });
+  async function fetchCharacters(url){
+
+       await axios.get(url).then((response) => {
+        console.log('response ',response.request.onload);
+        setTimeout(() =>{
+          // guardamos el objeto que tiene la pagina previa y la siguiente 
+          setPage(response.data.info);
+          setPersonajes(response.data.results);
+          setError(false);
+          setLoading(response.request.onload);
+        },1000)
+      }).catch(error =>{
+        console.log('El error fue ',error);
+        setError(true);
+        setLoading(false);
+      });
   }
+  
+
 
   // funcion que hace los llamados de character y paginacion
   const fetchEpisodes = (url) => {
@@ -36,11 +55,13 @@ function useFetch(){
         // guardamos el objeto que tiene la pagina previa y la siguiente 
         setPage(response.data.info);
         // console.log(response.data.results)
+        setLoading(false);
     });
   }
 
 
   useEffect(() => {
+ 
     if(selectedValue === 'character'){
       fetchCharacters(urlCharacter)
     }else if(selectedValue === 'episode'){
@@ -77,7 +98,9 @@ function useFetch(){
         setSearchValue,
         searchedCharacters,
         episodes,
-        fetchEpisodes
+        fetchEpisodes,
+        loading,
+        error
     }
 }
 
