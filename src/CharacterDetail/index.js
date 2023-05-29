@@ -3,6 +3,8 @@ import "./CharacterDetail.css"
 
 function CharacterDetail(props){
 
+    React.useContext();
+
     const onCancel = () =>{
 
         props.setOpenCharacterDetail(prevState => !prevState);
