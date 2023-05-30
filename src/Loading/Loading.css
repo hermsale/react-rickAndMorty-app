@@ -1,7 +1,7 @@
 :root {
-    --blue-light-2: #85dcff;
-    --blue-light-1: #DFF6FF;
-    --blue-dark-1: #2c9fc6;
+    --gray-light-2: #f1f2f3;
+    --gray-light-1: #bbbbbc;
+    --gray-dark-1: #2c9fc6;
   }
 .TodoLoading_item {
     display: flex;
@@ -17,7 +17,7 @@
     margin: 5px;
     cursor: pointer;
 
-    background-color: var(--blue-dark-1);
+    background-color: var(--gray-dark-1);
     animation:skelenton;
     animation-duration: 3s;
     animation-iteration-count: infinite;
@@ -47,13 +47,13 @@
 
 @keyframes skelenton{
     0%{
-      background-color: var(--blue-light-2);
+      background-color: var(--gray-light-2);
     }
     50%{
-      background-color: var(--blue-light-1);
+      background-color: var(--gray-light-1);
     }
     100%{
-      background-color: var(--blue-light-2);
+      background-color: var(--gray-light-2);
     }
 }
   
